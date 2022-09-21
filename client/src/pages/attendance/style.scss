@@ -1,0 +1,126 @@
+@import url('../../App.css');
+
+:root {
+    --profileImgWidth: 10rem;
+}
+
+.Attendance {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    .Attendance-bg {
+        position: relative;
+        width: inherit;
+        height: inherit;
+        background: var(--bgColor);
+    }
+    .card-info {
+        position: absolute;
+        top: 10rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: var(--cardInfoWidth);
+        border-radius: 1.5rem;
+        box-shadow: var(--profileShadow);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .profile-container {
+            position: absolute;
+            top: calc(var(--profileImgWidth)/-2);
+            width: var(--profileImgWidth);
+            height: var(--profileImgWidth);
+            box-shadow: var(--profileShadow);
+            border-radius: 50%;
+            .profile {
+                position: relative;
+                width: var(--profileImgWidth);
+                height: var(--profileImgWidth);
+                box-shadow: var(--profileShadow);
+                border-radius: 50%;
+                overflow: hidden;
+                transition: all .3s;
+                z-index: 1;
+                img {
+                    width: var(--profileImgWidth);
+                    height: var(--profileImgWidth);
+                    object-fit: cover;
+                    object-position: center center;
+                }
+            }
+        }
+    }
+    .content {
+        margin-top: calc(var(--profileImgWidth)/2 + 0.5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        .name {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+        }
+        p {
+            margin: 0;
+            padding: 6px 0;
+        }
+        .work-status {
+            display: flex;
+            font-size: 0.9rem;
+            gap: 1rem;
+            align-items: center;
+            .working {
+                font-size: 0.6rem;
+                border-radius: 11px;
+                color: #fff;
+                background-color: var(--video);
+                height: fit-content;
+                p {
+                    margin: 0;
+                    padding: 6px 12px;
+                }
+            }
+            .rest {
+                font-size: 0.6rem;
+                border-radius: 11px;
+                color: #fff;
+                background-color: var(--hrColor);
+                height: fit-content;
+                p {
+                    margin: 0;
+                    padding: 6px 12px;
+                }
+            }
+        }
+        .workplance-input {
+            width: 100%;
+            margin: 0;
+            margin-top: 32px;
+            align-items: center;
+            padding: 0 3rem;
+            .input-label {
+                padding-right: 2rem;
+                text-align: right;
+            }
+            .input-selector {
+                width: 80%;
+            }
+        }
+        .button-group {
+            padding: 2rem 0 2rem;
+            display: flex;
+            justify-items: center;
+            gap: 1rem
+        }
+        .attended {
+            padding-top: 1.5rem;
+        }
+    }
+}
+
+.annual-leave-dialog {
+    .annual-leave-input-group {
+        margin-bottom: 1rem;
+    }
+}

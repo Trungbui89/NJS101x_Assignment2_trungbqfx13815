@@ -1,0 +1,213 @@
+@import url('../../App.css');
+
+:root {
+    --cardInfoWidth: 40%;
+    --profileImgWidth: 9rem;
+}
+
+.Home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    .home-bg {
+        position: relative;
+        width: inherit;
+        height: inherit;
+        background: var(--bgColor);
+    }
+    .card-info {
+        position: absolute;
+        top: 6rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: var(--cardInfoWidth);
+        border-radius: 1.5rem;
+        box-shadow: var(--profileShadow);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        .profile-images {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .cover-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+                height: 12rem;
+                overflow: hidden;
+                cursor: pointer;
+                .cover {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    transition: all 300ms linear;
+                    position: relative;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center center;
+                    }
+                }
+                .edit-cover-img-icon {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all 300ms linear;
+                    >.fa {
+                        font-size: 0;
+                        position: relative;
+                        top: -17%;
+                        transition: all 300ms linear;
+                    }
+                }
+            }
+            .cover-container:hover {
+                .cover {
+                    transform: scale(1.1);
+                }
+                .edit-cover-img-icon {
+                    backdrop-filter: blur(1px);
+                    background: rgba(0, 0, 0, .15);
+                    .fa{
+                        font-size: 4.5rem;
+                    }
+                }
+            }
+            .profile-container {
+                position: absolute;
+                bottom: calc(var(--profileImgWidth)/-2);
+                width: var(--profileImgWidth);
+                height: var(--profileImgWidth);
+                box-shadow: var(--profileShadow);
+                border-radius: 50%;
+                .profile {
+                    position: relative;
+                    width: var(--profileImgWidth);
+                    height: var(--profileImgWidth);
+                    box-shadow: var(--profileShadow);
+                    border-radius: 50%;
+                    overflow: hidden;
+                    cursor: pointer;
+                    transition: all .3s;
+                    z-index: 1;
+                    img {
+                        width: var(--profileImgWidth);
+                        height: var(--profileImgWidth);
+                        object-fit: cover;
+                        object-position: center center;
+                    }
+                }
+                .edit-icon {
+                    position: absolute;
+                    cursor: pointer;
+                    bottom: 3%;
+                    right: 6%;
+                    box-shadow: var(--profileShadow);
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #7f7f7f;
+                    background: #fff;
+                    border: 0.5px solid #d3d3d3;
+                    z-index: 2;
+                    transition: all .3s;
+                    overflow: hidden;
+                }
+            }
+            .profile-container:hover .edit-icon {
+                color: #4a45a8;
+                transform: scale(1.2);
+            }
+            .profile-container:hover .profile {
+                box-shadow: 0px 6px 17px 2px rgba(0, 0, 0, 0.35);
+                transform: scale(1.05);
+            }
+        }
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: calc(var(--profileImgWidth)/2);
+            .name {
+                font-size: 1.5rem;
+                color: var(--themeBlack);
+                margin-bottom: 0;
+            }
+            .profile-detail {
+                width: 90%;
+                padding-top: 16px;
+                padding-bottom: 24px;
+            }
+        }
+    }
+}
+
+.cardBody {
+    position: fixed;
+    width: fit-content;
+    min-width: 550px;
+    top: 10%;
+    transform: translateX(-50%);
+    background: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    border-radius: 9px;
+    overflow: hidden;
+    .preview-cover {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 12rem;
+        overflow: hidden;
+        margin-bottom: 32px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+    }
+    .preview-avatar {
+        position: relative;
+        z-index: 2;
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: 32px;
+        margin-bottom: 32px;
+        box-shadow: 0px 6px 17px 2px rgba(0, 0, 0, 0.35);
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+    }
+    .preview-avatar-text {
+        color: #333333; 
+        padding: 0 38px 26px; 
+        text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25)
+    }
+    .preview-avatar-button-group {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 32px;
+    }
+}

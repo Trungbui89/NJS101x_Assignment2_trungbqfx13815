@@ -1,0 +1,56 @@
+.blur {
+    position: absolute;
+    width: 22rem;
+    height: 14rem;
+    border-radius: 50%;
+    background: #a6ddf0;
+    filter: blur(72px);
+    z-index: -1;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+    .list-items {
+        position: relative;
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        justify-content: center;
+        z-index: 99;
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding-top: 12px;
+        padding-inline-start: 0;
+        li {
+            cursor: pointer;
+            a {
+                color: var(--gray);
+                text-decoration: none;
+                transition: all ease 0.3s;
+            }
+        }
+        li:hover a {
+            color: var(--location);
+        }
+    }
+    .sign-out {
+        position: absolute;
+        right: 55px;
+        top: 16px;
+        cursor: pointer;
+        z-index: 999;
+        i {
+            font-size: 3rem;
+            color: var(--gray);
+            transition: all .3s linear;
+        }
+    }
+    .sign-out:hover {
+        i {
+            color: #222222;
+            text-shadow: rgba(0, 0, 0, 0.25) 1px 3px 5px;
+        }
+    }
+}
