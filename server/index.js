@@ -3,6 +3,10 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
+
+const { loginUser } = require('./Controllers/AuthController')
+
 const AuthRoute = require('./Routes/AuthRoute.js')
 const FilesRoute = require('./Routes/filesRoute.js')
 const AttendanceRoute = require('./Routes/AttendanceRoute.js')
@@ -26,10 +30,22 @@ mongoose.connect(
 .then(() => app.listen(process.env.PORT, () => console.log(`listening at ${process.env.PORT}`)))
 .catch((err) => console.log(err))
 
+// Authorization
+function authToken(req, res, next) {
+    console.log(req.body)
+    const token = req.body['Authorization']
+    if(!token) res.status(401).json({ message: 'Token not found' })
+    else jwt.verify(token, process.env.SECRET_TOKEN, (err, data) => {
+        if(err) res.status(403).json({ message: 'Token đã hết hạn, xin hãy đăng nhập lại' })
+        else next()
+    })
+}
+
 // Use routes
-app.use('/auth', AuthRoute)
-app.use(FilesRoute)
-app.use('/attendance', AttendanceRoute)
-app.use('/covid', CovidRoute)
-app.use('/vaccine', VaccineRoute)
-app.use(InfectionRoute)
+app.post('/auth/login', loginUser)
+app.use('/auth', authToken, AuthRoute)
+app.use('/attendance', authToken, AttendanceRoute)
+app.use('/covid', authToken, CovidRoute)
+app.use('/vaccine', authToken, VaccineRoute)
+app.use(authToken, InfectionRoute)
+app.use(authToken, FilesRoute)

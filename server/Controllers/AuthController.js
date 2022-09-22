@@ -1,4 +1,5 @@
 const User = require("../Models/user.js")
+const jwt = require("jsonwebtoken")
 
 exports.registerUser = (req, res, next) => {
     const userName = req.body.userName
@@ -30,7 +31,7 @@ exports.registerUser = (req, res, next) => {
     user
         .save()
         .then(result => {
-            res.send("create success")
+            res.status(200).json({ message: 'create successful!' })
         })
         .catch(err => console.log(err))
 }
@@ -41,10 +42,11 @@ exports.loginUser = (req, res, next) => {
     User.findOne({'userName': userName})
     .then((user) => {
         if(user) {
+            const Authorization = jwt.sign({_id: user._id.toString()}, process.env.SECRET_TOKEN, {expiresIn: '24h'})
             if(password !== user.password) {
                 res.status(400).json('wrong password') 
             } else {
-                res.status(200).json({user: user})
+                res.status(200).json({ user: user, Authorization })
             }
         } else {
             res.status(404).json('User does not exists')

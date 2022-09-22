@@ -1,0 +1,16 @@
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "userName": "diepnh",
+    "password": "123456"
+}
+
+###
+POST http://localhost:5000/auth/get_user
+Content-Type: application/json
+
+{
+    "userId": "6302d17907caa69c620d5156",
+    "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzAyZDE3OTA3Y2FhNjljNjIwZDUxNTYiLCJpYXQiOjE2NjM4NTQ5MTAsImV4cCI6MTY2Mzk0MTMxMH0.tTIkcHZGNqoIaMv25yckEcrW05JhJsFpWj0g_69DsmA"
+}
