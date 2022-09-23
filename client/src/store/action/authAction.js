@@ -33,7 +33,7 @@ export const editUser = (formData) => (dispatch) => {
     dispatch({type: 'EDIT_USER_START'})
     AuthApi.editUser(formData)
         .then( result => {
-            dispatch({type: 'EDIT_USER_SUCCESS', payload: result.data})
+            dispatch({type: 'EDIT_USER_SUCCESS', payload: result.data.user})
             alert('Cập nhật thành công!')
         })
         .catch ( err => {

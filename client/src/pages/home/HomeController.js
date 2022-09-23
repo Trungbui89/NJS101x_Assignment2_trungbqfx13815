@@ -5,7 +5,7 @@ import { updateImage } from '../../store/action/fileAction'
 import { editUser } from "../../store/action/authAction"
 
 const Home = () => {
-    const userData = useSelector((state) => state.authReducer.authData.user)
+    const userData = useSelector((state) => state.authReducer.authData)
     const imgData = useSelector((state) => state.fileReducer.imgData)
     const dispatch = useDispatch()
     const [modalStatus, setModalStatus] = React.useState(false)

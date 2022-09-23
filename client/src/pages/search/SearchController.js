@@ -6,7 +6,7 @@ import { getAllAttendance } from '../../store/api/attendanceRequest'
 import { workTime_DMY, convertToDMY } from '../../common/helper/workTime_DMY'
 
 export default function SearchController() {
-    const user = useSelector(state => state.authReducer.authData.user)
+    const user = useSelector(state => state.authReducer.authData)
     const [attendanceData, setAttendanceData] = useState(null)
     const [datePickerValue, setDatePickerValue] = useState(null)
     const [dateModalState, setDateModalState] = useState(false)

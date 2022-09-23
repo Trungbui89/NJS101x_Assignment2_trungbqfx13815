@@ -32,8 +32,7 @@ mongoose.connect(
 
 // Authorization
 function authToken(req, res, next) {
-    console.log(req.body)
-    const token = req.body['Authorization']
+    const token = req.headers['authorization']
     if(!token) res.status(401).json({ message: 'Token not found' })
     else jwt.verify(token, process.env.SECRET_TOKEN, (err, data) => {
         if(err) res.status(403).json({ message: 'Token đã hết hạn, xin hãy đăng nhập lại' })
@@ -42,10 +41,10 @@ function authToken(req, res, next) {
 }
 
 // Use routes
+app.use(FilesRoute)
 app.post('/auth/login', loginUser)
 app.use('/auth', authToken, AuthRoute)
 app.use('/attendance', authToken, AttendanceRoute)
 app.use('/covid', authToken, CovidRoute)
 app.use('/vaccine', authToken, VaccineRoute)
 app.use(authToken, InfectionRoute)
-app.use(authToken, FilesRoute)

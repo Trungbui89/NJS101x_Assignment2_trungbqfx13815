@@ -8,7 +8,7 @@ import { workTime_DMY } from '../../common/helper/workTime_DMY'
 
 const AttendanceController = () => {
     const dispatch = useDispatch()
-    const userData = useSelector((state) => state.authReducer.authData.user)
+    const userData = useSelector((state) => state.authReducer.authData)
     const attendanceData = useSelector(state => state.attendanceReducer)
     const endAttendanceData = useSelector(state => state.endAttendanceReducer.endAttendanceData)
 

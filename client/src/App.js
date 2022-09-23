@@ -9,17 +9,17 @@ import Search from './pages/search/SearchController'
 import Covid19 from './pages/covid19/Covid19Controller'
 
 function App() {
-  const user = useSelector((state) => state.authReducer.authData)
+  const Authorization = useSelector((state) => state.authReducer?.Authorization)
   return (
     <div className="App">
       <Layout>
         <Routes>
-          <Route path='/' element={user ? <Navigate to = 'home'/> : <Navigate to = 'login' />} />
-          <Route path='/home' element={user ? <HomeController /> : <Navigate to = '../login' />} />
-          <Route path='/login' element={user ? <Navigate to = '../home' /> : <Login />} />
-          <Route path='/attendance' element={user ? <Attendance /> : <Navigate to = '../login' />} />
-          <Route path='/search' element={user ? <Search /> : <Navigate to = '../login' />} />
-          <Route path='/covid_19' element={user ? <Covid19 /> : <Navigate to = '../login' />} />
+          <Route path='/' element={Authorization ? <Navigate to = 'home'/> : <Navigate to = 'login' />} />
+          <Route path='/home' element={Authorization ? <HomeController /> : <Navigate to = '../login' />} />
+          <Route path='/login' element={Authorization ? <Navigate to = '../home' /> : <Login />} />
+          <Route path='/attendance' element={Authorization ? <Attendance /> : <Navigate to = '../login' />} />
+          <Route path='/search' element={Authorization ? <Search /> : <Navigate to = '../login' />} />
+          <Route path='/covid_19' element={Authorization ? <Covid19 /> : <Navigate to = '../login' />} />
         </Routes>
       </Layout>
     </div>

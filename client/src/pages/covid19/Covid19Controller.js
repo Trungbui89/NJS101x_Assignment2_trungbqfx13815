@@ -5,7 +5,7 @@ import { registerTemperature, vaccineRegister, infectionRegister } from '../../s
 
 export default function Covid19Controller() {
 
-    const userData = useSelector((state) => state.authReducer.authData.user)
+    const userData = useSelector((state) => state.authReducer.authData)
     
     const [temperature, setTemperature] = useState({date: null, temperature: 0})
     const [tempResData, setTempResData] = useState(null)
