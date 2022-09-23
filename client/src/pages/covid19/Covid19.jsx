@@ -81,7 +81,7 @@ export default function Covid19(props) {
                                         label="Thân nhiệt"
                                         margin="dense"
                                         type="number"
-                                        value={temperature.temp}
+                                        value={temperature.temperature}
                                         onChange={(e) => {
                                             handleTemperature('temp', e.target.value)
                                         }}

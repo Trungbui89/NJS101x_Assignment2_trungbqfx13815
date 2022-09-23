@@ -20,7 +20,7 @@ const AttendanceController = () => {
         reason: '',
         annualLeaveDateList: [{
             index: 1,
-            annualDate: null,
+            annualDate: moment(),
             annualTime: 0
         }]
     })
@@ -80,7 +80,7 @@ const AttendanceController = () => {
                 ...annualData, 
                 annualLeaveDateList: [
                     ...annualData.annualLeaveDateList, 
-                    {index: newIndex, annualDate: null, annualTime: 0}
+                    {index: newIndex, annualDate: moment(), annualTime: 0}
                 ]
             })
         } else if(type === 'remove') {

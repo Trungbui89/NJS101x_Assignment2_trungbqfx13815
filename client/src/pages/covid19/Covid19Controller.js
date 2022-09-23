@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import moment from 'moment'
 import Covid19 from './Covid19'
 import { registerTemperature, vaccineRegister, infectionRegister } from '../../store/api/covidRequest'
 
@@ -7,7 +8,7 @@ export default function Covid19Controller() {
 
     const userData = useSelector((state) => state.authReducer.authData)
     
-    const [temperature, setTemperature] = useState({date: null, temperature: 0})
+    const [temperature, setTemperature] = useState({date: moment(), temperature: 37})
     const [tempResData, setTempResData] = useState(null)
 
     const handleTemperature = (type, data) => {
@@ -16,7 +17,15 @@ export default function Covid19Controller() {
                 setTemperature({...temperature, date: data})
                 break
             case 'temp':
-                setTemperature({...temperature, temperature: data})
+                let newData = 0
+                if(data < 0) {
+                    newData = 0
+                } else if (data > 45) {
+                    newData = 45
+                } else {
+                    newData = data
+                }
+                setTemperature({...temperature, temperature: newData})
                 break
             default:
                 break
@@ -38,7 +47,7 @@ export default function Covid19Controller() {
     // vaccine register state
     const [vaccineInputList, setVaccineInputList] = useState([{
         index: 1,
-        date: null,
+        date: moment(),
         type: 'AstraZeneca',
     }])
     const [vaccineResData, setVaccineResData] = useState(null)
@@ -68,7 +77,7 @@ export default function Covid19Controller() {
                 ...vaccineInputList,
                 {
                     index: newIndex,
-                    date: null,
+                    date: moment(),
                     type: 'AstraZeneca',
                 }
             ])
